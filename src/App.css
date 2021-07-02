@@ -1,0 +1,150 @@
+
+.container{
+  max-width: 1050px;
+  margin: auto;
+  background-color: #F6F6EF;
+}
+
+.header{
+  height: 25px;
+  width: 100%;
+  background-color: #ff6600;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-section{
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid;
+  border-color: black; */
+}
+
+.header-text-section{
+  display: flex;
+}
+
+.header-image{
+  color: hsla(16, 100%, 50%, 0.973);
+  margin: 2px 10px 0px 5px;
+  border: 1px solid;
+  border-color:white;
+}
+
+.header-text{
+  font-weight: 700;
+  margin: 1px 0px 0px 0px;
+}
+
+.header-menu{
+  margin: 1px 0px 0px 10px;
+}
+
+.menu-item{
+  display: inline;
+  font-size: 14px;
+  font-weight: 400;
+  margin-right: 10px;
+}
+
+.login-section p{
+  font-size: 14px;
+  font-weight: 400;
+  margin: 3px 10px 0px 4px;
+}
+
+
+.lists-of-headline{
+
+}
+
+.headline{
+  display: flex;
+  margin: 0px 0px 0px 10px;
+}
+
+.headline-no{
+  display: flex;
+  /* border: 1px solid;
+  border-color: black; */
+}
+
+
+.headline-no p{
+  margin: 5px 0px 0px 0px;
+}
+
+
+.grayarrow{
+  width: 10px;
+  height: 10px;
+  border: 0px;
+  margin: 12px 0px 0px 5px;
+  background: url("grayarrow.gif")
+}
+
+.headline-section{
+  display: flex;
+  margin: 0px 0px 0px 0px;
+  /* border: 1px solid;
+  border-color: black; */
+}
+
+.headline-content{
+  margin: 0px 0px 0px 10px;
+}
+
+.main-headline{
+  margin: 5px 0px 0px 0px;
+}
+
+.headline-website{
+  margin: 10px 0px 0px 3px;
+  font-size: 12px;
+  color: #a38f87;
+}
+
+.headline-comments{
+  margin: 0px 0px 0px 0px;
+  display: inline-block;
+  /* border: 1px solid;
+  border-color: black; */
+}
+
+
+
+.headline-comments p{
+  margin: 0px 5px 0px 0px;
+  font-size: 13px;
+  color: #a38f87;
+  display: inline-block;
+  /* border: 1px solid;
+  border-color: #b3918271; */
+}
+
+
+@media screen and (max-width: 700px){
+  
+  .header{
+    height: 50px;
+  }
+
+  .header-text-section{
+    display: block;
+  }
+  
+  .header-image{
+    margin-top: 10px;
+  }
+
+
+  .header-menu{
+    margin: 0px 0px 0px 0px;
+  }
+
+  .login-section p{
+    margin-top: 10px;
+  }
+
+}
+
