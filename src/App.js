@@ -16,24 +16,28 @@ export default class  App extends React.Component {
         .then( (res) => {
             console.log('This is your data', res)
             const hnData = res.data
-            for(var i= 0; i<30; i++){
-                console.log(' integer ', i)
-               // console.log(`This is the data, ${hnData[i]}`)
-                axios.get(`https://hacker-news.firebaseio.com/v0/item/${hnData[i]}.json?print=pretty`)
-                // eslint-disable-next-line no-loop-func
-                .then((res) =>{
-                    // console.log('This is your data', res)
-                    headlinesArray[x] = res.data
-                    console.log('This is your headlinesArray', headlinesArray[x])
-                    x++
-                })
-            }
+            this.getAllHackerNewsItem(x, headlinesArray, hnData)
             console.log('This is your headlinesArray', headlinesArray)
              this.setState({
                  headlines : headlinesArray
              })
              console.log('This is your headlines in the state', this.state.headlines)
         })
+    }
+
+    async getAllHackerNewsItem ( x, headlinesArray, hnData){
+        for(var i= 0; i<30; i++){
+            console.log(' integer ', i)
+           // console.log(`This is the data, ${hnData[i]}`)
+            axios.get(`https://hacker-news.firebaseio.com/v0/item/${hnData[i]}.json?print=pretty`)
+            // eslint-disable-next-line no-loop-func
+            .then((res) =>{
+                // console.log('This is your data', res)
+                headlinesArray[x] = res.data
+                console.log('This is your headlinesArray', headlinesArray[x])
+                x++
+            })
+        }
     }
 
     render(){
