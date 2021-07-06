@@ -34,7 +34,10 @@ export default class  App extends React.Component {
             .then((res) =>{
                 // console.log('This is your data', res)
                 headlinesArray[x] = res.data
-                console.log('This is your headlinesArray', headlinesArray[x])
+                console.log('This is your headlinesArray', headlinesArray[x], ' value of i', i)
+                if(x == 29){
+                    this.forceUpdate()
+                }
                 x++
             })
         }
