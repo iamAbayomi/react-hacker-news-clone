@@ -2,36 +2,45 @@
 import './App.css';
 import axios from 'axios'
 import React from 'react';
+import Headline from './components/headline'
 
 export default class  App extends React.Component {
-    constructor(){
-        super()
-        this.state ={
-            news: ""
-        }
+
+    state ={
+        headlines :[]
     }
     
     componentDidMount(){
+        let x =0, headlinesArray = []
         axios.get('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty')
         .then( (res) => {
             console.log('This is your data', res)
             const hnData = res.data
-            console.log(`This is the data, ${hnData[1]}`)
-            for(var i= 0; i<10; i++){
-                console.log(`This is the data, ${hnData[i]}`)
-                axios.get(`https://hacker-news.firebaseio.com/v0/item/${hnData[i]}.json?print=pretty`)
-                // eslint-disable-next-line no-loop-func
-                .then((res) =>{
-                    console.log('This is the data', res)
-                    if(i===49){
-                        this.setState({
-                            news : res
-                        })
-                    }
-                })
-            }
-             
+            this.getAllHackerNewsItem(x, headlinesArray, hnData)
+            console.log('This is your headlinesArray', headlinesArray)
+             this.setState({
+                 headlines : headlinesArray
+             })
+             console.log('This is your headlines in the state', this.state.headlines)
         })
+    }
+
+    async getAllHackerNewsItem ( x, headlinesArray, hnData){
+        for(var i= 0; i<30; i++){
+            console.log(' integer ', i)
+           // console.log(`This is the data, ${hnData[i]}`)
+            axios.get(`https://hacker-news.firebaseio.com/v0/item/${hnData[i]}.json?print=pretty`)
+            // eslint-disable-next-line no-loop-func
+            .then((res) =>{
+                // console.log('This is your data', res)
+                headlinesArray[x] = res.data
+                console.log('This is your headlinesArray', headlinesArray[x])
+                if(x === 29){
+                    this.forceUpdate()
+                }
+                x++
+            })
+        }
     }
 
     render(){
@@ -80,34 +89,10 @@ export default class  App extends React.Component {
                     </p>
                 </div>
             </div>
-
-            <div class="lists-of-headline">
-               
-                <div class="headline">
-                    <div class="headline-no">
-                        <p>1.</p> 
-                        <div class="grayarrow" title="upvote"></div>
-                    </div>
-                    <div class="headline-content">
-                        <div class="headline-section">
-                            <p class="main-headline">
-                                MIT and Harvard agree to transfer edX to ed-tech firm 2U
-                            </p>
-                            <p class="headline-website">
-                                (news.mit.edu)
-                            </p>
-                        </div>
-                        <div class="headline-comments">
-                            <p>83 points</p>
-                            <p>by razin </p>
-                            <p>58 minutes ago</p>
-                            <p>| hide</p>
-                            <p>| 62 comments</p>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+        
+        <div class="lists-of-headline">
+            <Headline headlines={this.state.headlines} /> 
+        </div>
         </div>
         </div>
     );
